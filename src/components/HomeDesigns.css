@@ -1,0 +1,92 @@
+.headerNavContainer {
+    display: flex;
+    gap: 4rem;
+}
+
+.navItem:hover {
+    color: #2563EB;
+  }
+
+.brandingContainer {
+    display: flex;
+    width: 100%;
+    gap: 10px; /* Add space between items */
+    justify-content: space-between; /* Space between text and image */
+}
+
+.brandingTextContainer {
+    display: block;
+    width: 50%;
+    height: fit-content;
+    padding-top: 128px;
+    padding-left: 32px;
+    gap: 10px; /* Add space between items */
+    align-items: center; /* Center items vertically */
+    justify-content: space-between; /* Space between text and image */
+}
+
+.textHead {
+    color: rgb(37, 35, 35);
+    font-size: 48px;
+    font-weight: bold;
+}
+
+.textHead2 {
+    color: rgb(37, 35, 35);
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.columnWrapContent {
+    display: flex;
+    gap: 1rem;
+}
+
+.textBody {
+    color: rgb(59, 54, 54);
+    font-size: 16px;
+    padding-top: 16px;
+}
+
+.image-container {
+    width: 50%; 
+    height: 500px; 
+    padding-right: 32px;
+    padding-top: 64px;
+    overflow: hidden; /* Keep image within border radius */
+}
+
+.image {
+    border-radius: 8px;
+    overflow: hidden; /* Keep image within border radius */
+    width: 100%;
+    height: 100%;
+    object-fit: none;
+}
+
+.howItWorksContainer {
+    display: flex; /* Use flexbox for horizontal alignment */
+    width: 100%;
+    align-items: center; /* Vertically center items */
+    justify-content: center; /* Center items horizontally */
+    background-color: #F8F9FA;
+    gap: 10px; /* Add space between items */
+}
+
+.slider {
+    border-radius: 8px;
+    overflow: hidden; /* Keep image within border radius */
+    width: 100%;
+    height: 100%;
+    object-fit: none;
+  }
+  
+  .slider-wrapper {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .slider-wrapper img {
+    width: 100%;
+    object-fit: none;
+  }
