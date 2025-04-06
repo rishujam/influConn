@@ -8,6 +8,7 @@ import Spacer from './components/Spacer';
 import TextView from './components/TextView';
 import React, { useState } from "react";
 import Modal from "./components/Modal";
+import { saveUserData } from "./FirebaseSource";
 
 /**
  * The App component renders the main layout and sections of the InfluConnect application.
@@ -42,7 +43,14 @@ function App() {
           <Button text="Get Started" variant="primary" onClick={() => setIsModalOpen(true)} />
         </div>
       </header>
-      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} onSubmit={() => alert("Details Sent!")} />
+      <Modal 
+        isOpen={isModalOpen} 
+        onClose={() => setIsModalOpen(false)} 
+        onSubmit={(userData) => {
+          saveUserData(userData);
+          setIsModalOpen(false);
+        }} 
+      />
       <section id="about"> {
         <div className="brandingContainer">
           <div className="brandingTextContainer">
@@ -50,8 +58,8 @@ function App() {
             <div className="textBody">Match with micro-influencers who truly understand your brand and reach engaged audiences.</div>
             <Spacer height='8px' />
             <div className="columnWrapContent" style={{ paddingTop: '16px' }}>
-              <Button text="I'm a Brand" variant="primary" onClick={() => alert("Primary Clicked!")} />
-              <Button text="I'm an Influencer" variant="secondary" onClick={() => alert("Secondary Clicked!")} />
+              <Button text="I'm a Brand" variant="primary" onClick={() => setIsModalOpen(true)} />
+              <Button text="I'm an Influencer" variant="secondary" onClick={() => setIsModalOpen(true)} />
             </div>
             <Spacer height='8px' />
             <ul className="bullet-list">
@@ -190,7 +198,7 @@ function App() {
         <Spacer height='16px' />
         <TextView text={"Join thousands of successful partnerships on our platform"} color="#ffffff" fontSize='16px' fontWeight='400' alignment='center' />
         <Spacer height='16px' />
-        <Button text="Get Started" variant="tertiary" onClick={() => alert("Tertiary Clicked!")} />
+        <Button text="Get Started" variant="tertiary" onClick={() => setIsModalOpen(true)} />
         <Spacer height='56px' />
       </Column>
 
