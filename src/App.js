@@ -7,9 +7,9 @@ import Row from './components/Row';
 import Spacer from './components/Spacer';
 import TextView from './components/TextView';
 import React, { useState } from "react";
-import Modal from "./components/Modal";
+import GetStartedModal from "./components/GetStartedModal";
 import { saveUserData } from "./FirebaseSource";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import { HashRouter as Router, Route, Routes, Link } from "react-router-dom";
 import PrivacyPolicy from './components/PrivacyPolicy';
 
 /**
@@ -27,6 +27,12 @@ function App() {
     "/images/home_bg2.jpeg"
   ];
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedUserType, setSelectedUserType] = useState("");
+
+  const openModal = (userType = "") => {
+    setSelectedUserType(userType);
+    setIsModalOpen(true);
+  };
 
   const MainContent = () => (
     <div>
@@ -43,16 +49,13 @@ function App() {
           </nav>
         </div>
         <div className="header-buttons">
-          <Button text="Get Started" variant="primary" onClick={() => setIsModalOpen(true)} />
+          <Button text="Get Started" variant="primary" onClick={() => openModal()} />
         </div>
       </header>
-      <Modal 
+      <GetStartedModal 
         isOpen={isModalOpen} 
+        userType={selectedUserType}
         onClose={() => setIsModalOpen(false)} 
-        onSubmit={(userData) => {
-          saveUserData(userData);
-          setIsModalOpen(false);
-        }} 
       />
       <section id="about"> {
         <div className="brandingContainer">
@@ -61,8 +64,8 @@ function App() {
             <div className="textBody">Match with micro-influencers who truly understand your brand and reach engaged audiences.</div>
             <Spacer height='8px' />
             <div className="columnWrapContent" style={{ paddingTop: '16px' }}>
-              <Button text="I'm a Brand" variant="primary" onClick={() => setIsModalOpen(true)} />
-              <Button text="I'm an Influencer" variant="secondary" onClick={() => setIsModalOpen(true)} />
+              <Button text="I'm a Brand" variant="primary" onClick={() => openModal("brand")} />
+              <Button text="I'm an Influencer" variant="secondary" onClick={() => openModal("influencer")} />
             </div>
             <Spacer height='8px' />
             <ul className="bullet-list">
