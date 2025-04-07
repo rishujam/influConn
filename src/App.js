@@ -9,6 +9,8 @@ import TextView from './components/TextView';
 import React, { useState } from "react";
 import Modal from "./components/Modal";
 import { saveUserData } from "./FirebaseSource";
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import PrivacyPolicy from './components/PrivacyPolicy';
 
 /**
  * The App component renders the main layout and sections of the InfluConnect application.
@@ -25,7 +27,8 @@ function App() {
     "/images/home_bg2.jpeg"
   ];
   const [isModalOpen, setIsModalOpen] = useState(false);
-  return (
+
+  const MainContent = () => (
     <div>
       <header className="header">
         <div className="logo">
@@ -207,10 +210,22 @@ function App() {
         <Spacer height='36px' />
         <TextView text={"Contact Us"} color="#ffffff" fontSize='24px' fontWeight='700' alignment='center' />
         <Spacer height='8px' />
-        <TextView text={"Email: influconn@gmail.com"} color="#ffffff" fontSize='16px' fontWeight='400' alignment='center' />
+        <div className="footer">
+          <a href="mailto:influconn@gmail.com" className="email-link">influconn@gmail.com</a>
+          <Link to="/privacy" className="privacy-link" style={{marginLeft: '20px', fontSize: '14px', color: '#666'}}>Privacy Policy</Link>
+        </div>
         <Spacer height='36px' />
       </Column>
     </div>
+  );
+
+  return (
+    <Router>
+      <Routes>
+        <Route path="/privacy" element={<PrivacyPolicy />} />
+        <Route path="/" element={<MainContent />} />
+      </Routes>
+    </Router>
   );
 }
 
